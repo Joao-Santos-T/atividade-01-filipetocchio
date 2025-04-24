@@ -26,6 +26,14 @@ class TestAluno(unittest.TestCase):
         freq = self.aluno.calcular_frequencia("Português", 10)
         self.assertEqual(freq, 80.0)
 
+    def test_inicializacao_com_none(self):
+        aluno = Aluno(nome="Carlos", matricula="C02", notas=None, faltas=None)
+        self.assertEqual(aluno.notas, {})
+        self.assertEqual(aluno.faltas, {})
 
-if __name__ == "__main__":
-    unittest.main()
+    def test_media_sem_notas(self):
+        self.assertEqual(self.aluno.calcular_media("Inglês"), 0.0)
+
+    def test_frequencia_sem_faltas(self):
+        freq = self.aluno.calcular_frequencia("Química", 20)
+        self.assertEqual(freq, 100.0)

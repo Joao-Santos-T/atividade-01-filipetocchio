@@ -28,7 +28,6 @@ class TestProduto(unittest.TestCase):
     def test_adicionar_estoque(self):
         self.produto.adicionar_estoque(10)
         self.assertEqual(self.produto.quantidade, 30)
-
         with self.assertRaises(ValueError):
             self.produto.adicionar_estoque(-5)
 
@@ -36,10 +35,8 @@ class TestProduto(unittest.TestCase):
         sucesso = self.produto.remover_estoque(5)
         self.assertTrue(sucesso)
         self.assertEqual(self.produto.quantidade, 15)
-
         sucesso = self.produto.remover_estoque(50)
         self.assertFalse(sucesso)
-
         with self.assertRaises(ValueError):
             self.produto.remover_estoque(-1)
 
@@ -57,7 +54,3 @@ class TestProduto(unittest.TestCase):
         self.assertFalse(self.produto.verificar_validade())
         self.produto.data_validade = None
         self.assertTrue(self.produto.verificar_validade())
-
-
-if __name__ == "__main__":
-    unittest.main()

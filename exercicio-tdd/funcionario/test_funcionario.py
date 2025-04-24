@@ -26,10 +26,18 @@ class TestFuncionario(unittest.TestCase):
 
     def test_calcular_comissao(self):
         self.assertEqual(self.func.calcular_comissao(), 1000)
-
         self.func.tem_comissao = False
         self.assertEqual(self.func.calcular_comissao(), 0)
 
-
-if __name__ == "__main__":
-    unittest.main()
+    def test_inicializacao_total(self):
+        f = Funcionario(
+            nome="Maria",
+            matricula=456,
+            salario_hora=60,
+            horas_trabalhadas=150,
+            custo_empregador=500,
+            tem_comissao=False,
+            valor_comissao=100,
+            contratos_fechados=2
+        )
+        self.assertEqual(f.nome, "Maria")
